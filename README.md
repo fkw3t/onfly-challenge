@@ -45,6 +45,7 @@ Obs:
     * person_type: boolean
     * email: varchar
     * phone: varchar
+    * password: varchar
 
 - table: expense
     * id: varchar(uuid)
@@ -54,8 +55,8 @@ Obs:
     * amount: decimal
 
 - table: users_expenses
-    * user_id: varchar
-    * expense_id: varchar
+    * user_id: varchar(uuid)
+    * expense_id: varchar(uuid)
 
 
 
