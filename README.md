@@ -8,9 +8,8 @@
 <h2>project structure</h2>
 
 * [x] Modelagem do banco
-* [] Modelagem de entidades
-    * [] Relacionamentos
-* [] Autenticação - JWT
+* [x] Modelagem de entidades
+    * [x] Relacionamentos
 * [] Estruturação de endpoints
     * [] Auth
         * [] cadastro 
@@ -27,15 +26,15 @@
 * [] Documentação - Swagger
 
 Obs:
-+ Utilizar UUID.
-+ Utilizar camada de services e repository pattern.
+- [x] Utilizar UUID.
+- [] Utilizar camada de services e repository pattern.
 
-- Fazer a validação da API utilizando o Form Request.
-- Fazer a camada de transformação da API utilizando o API Resources.
-- Fazer a camada de roteamento utilizando API Resource Routes.
-- Fazer a camada de restrição de acesso utilizando as Policies.
-- Disparar o e-mail utilizando as Notifications, e colocar ele em uma fila, para que seja disparado de forma assíncrona.
-- Não se esqueça das FK nas Migrations e das Relations dos Models.
+- [] Fazer a validação da API utilizando o Form Request.
+- [] Fazer a camada de transformação da API utilizando o API Resources.
+- [] Fazer a camada de roteamento utilizando API Resource Routes.
+- [] Fazer a camada de restrição de acesso utilizando as Policies.
+- [] Disparar o e-mail utilizando as Notifications, e colocar ele em uma fila, para que seja disparado de forma assíncrona.
+- [] Não se esqueça das FK nas Migrations e das Relations dos Models.
 
 <h2>modelagem banco de dados</h2>
 
