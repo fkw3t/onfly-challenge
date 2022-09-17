@@ -7,8 +7,9 @@
 
 <h2>project structure</h2>
 
-* [] Modelagem do banco
+* [x] Modelagem do banco
 * [] Modelagem de entidades
+    * [] Relacionamentos
 * [] Autenticação - JWT
 * [] Estruturação de endpoints
     * [] Auth
@@ -53,10 +54,6 @@ Obs:
     * occurred_in: datetime
     * user_id: varchar
     * amount: decimal
-
-- table: users_expenses
-    * user_id: varchar(uuid)
-    * expense_id: varchar(uuid)
 
 
 

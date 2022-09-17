@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('description');
-            $table->dateTime('ocorred_in');
-            $table->foreignUuid('user_id');
+            $table->dateTime('occurred_in');
+            $table->foreignUuid('user_id')->constrained();
             $table->decimal('amount');
             $table->timestamps();
         });
