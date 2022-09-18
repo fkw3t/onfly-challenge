@@ -21,6 +21,12 @@
         * [] visualizar despesa
         * [] editar despesa
         * [] remover despesa
+* [] Policies
+    * [] User
+        * [] Update
+        * [] Delete
+    * [] Expense
+        * [] Update
 * [] Notifications
 * [] Testes
 * [] Documentação - Swagger

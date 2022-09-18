@@ -53,8 +53,8 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     protected static function booted(): void
-    {    
-        static::creating(fn(User $user) => $user->id = (string) Uuid::uuid4());
+    {
+        static::creating(fn (User $user) => $user->id = (string) Uuid::uuid4());
     }
 
     public function getJWTIdentifier(): mixed
@@ -70,5 +70,20 @@ class User extends Authenticatable implements JWTSubject
     public function expenses(): HasMany
     {
         return $this->hasMany(Expense::class);
+    }
+
+    public function formatDocument(): string
+    {
+        if ($this->person_type === 'fisical') {
+            return sprintf(
+                '%d%d%d.%d%d%d.%d%d%d-%d%d',
+                ...str_split($this->document_id)
+            );
+        }
+
+        return sprintf(
+            '%d%d.%d%d%d.%d%d%d/%d%d%d-%d%d',
+            ...str_split($this->document_id)
+        );
     }
 }
