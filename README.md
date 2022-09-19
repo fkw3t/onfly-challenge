@@ -21,18 +21,21 @@
         * [x] visualizar usuario por documento
         * [x] editar usuario
         * [x] remover usuario
-    * [] Despesas
-        * [] cadastrar despesa
-        * [] visualizar despesa
-        * [] editar despesa
-        * [] remover despesa
-* [] API Resources
+    * [x] Despesas
+        * [x] cadastrar despesa
+        * [x] visualizar despesa
+        * [x] editar despesa
+        * [x] remover despesa
+* [x] API Resources
     * [x] Usuario
         * [x] Resource 
         * [x] Collection 
-    * [] Despesas
-        * [] Resource 
-        * [] Collection 
+    * [x] Despesas
+        * [x] Resource 
+        * [x] Collection 
+* [x] Authorization
+    * [] Usuario
+    * [x] Despesas
 * [] Notification
 * [] Testes
 * [] Documentação - Swagger

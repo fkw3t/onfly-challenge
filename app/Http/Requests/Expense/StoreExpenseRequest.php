@@ -28,8 +28,7 @@ class StoreExpenseRequest extends FormRequest
     {
         return [
             'description' => ['required', 'string', 'max:191'],
-            'occurred_in' => ['required', 'datetime', 'before:today'],
-            'user_id' => ['required', 'UUID', 'exists:App\Models\User,id'],
+            'occurred_in' => ['required', 'date', 'date_format:d-m-Y H:i', 'before:today'],
             'amount' => ['required', 'numeric', 'min:0'],
         ];
     }

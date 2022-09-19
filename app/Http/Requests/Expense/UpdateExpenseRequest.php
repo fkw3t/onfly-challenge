@@ -28,7 +28,7 @@ class UpdateExpenseRequest extends FormRequest
     {
         return [
             'description' => ['string', 'max:191'],
-            'occurred_in' => ['datetime', 'before:today'],
+            'occurred_in' => ['date', 'date_format:d-m-Y H:i', 'before:today'],
             'amount' => ['numeric', 'min:0'],
         ];
     }
