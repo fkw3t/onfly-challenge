@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\Expense;
 
 use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 
-class UpdateUserRequest extends FormRequest
+class StoreExpenseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,17 +27,18 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['string', 'max:50'],
-            'email' => ['unique:users', 'email'],
-            'phone' => ['string', 'regex:/^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/'],
-            'password' => ['string'],
+            'description' => ['required', 'string', 'max:191'],
+            'occurred_in' => ['required', 'datetime', 'before:today'],
+            'user_id' => ['required', 'UUID', 'exists:App\Models\User,id'],
+            'amount' => ['required', 'numeric', 'min:0'],
         ];
     }
 
     public function messages()
     {
         return [
-            'phone.regex' => 'Invalid phone format, please use: \'(XX) XXXXX-XXXX\'',
+            'amount.min' => 'Invalid amount, please send positive amount',
+            'occurred_in.before' => 'Invalid date, please send a date before the current date',
         ];
     }
 

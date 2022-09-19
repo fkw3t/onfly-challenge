@@ -7,9 +7,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use DomainException;
 use Illuminate\Http\JsonResponse;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\User\UserResource;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Resources\UserCollection;
+use App\Http\Resources\User\UserCollection;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,7 +28,6 @@ final class UserController extends Controller
         $data['password'] = Hash::make($data['password']);
         User::create($data);
 
-        // TODO add api resource(?)
         return response()->json([
             'message' => 'Successfully created'
         ], 201);
@@ -66,6 +65,8 @@ final class UserController extends Controller
         if (!$user) {
             throw new DomainException('Content not found', 204);
         }
+
+        $user->update($request->all());
 
         return response()->json([
             'message' => 'Successfully updated'

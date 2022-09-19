@@ -7,6 +7,7 @@ use App\Rules\PersonType;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 
 class StoreUserRequest extends FormRequest
@@ -45,7 +46,7 @@ class StoreUserRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
         $response = new Response(['error' => $validator->errors()->all()], 422);
         throw new ValidationException($validator, $response);

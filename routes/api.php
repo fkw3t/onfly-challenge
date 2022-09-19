@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::group(['middleware' => 'jwt.auth'], function () {
 
+        Route::apiResource('expense', ExpenseController::class);
         Route::apiResource('user', UserController::class)->except(['store']);
         Route::get('user/document/{document}', [UserController::class, 'showByDocument']);
 

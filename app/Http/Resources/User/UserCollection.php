@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\User;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ExpenseCollection extends ResourceCollection
+class UserCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -17,7 +17,10 @@ class ExpenseCollection extends ResourceCollection
         return [
             'data' => $this->collection,
             'links' => [
-                'self' => 'link-value',
+                'list all users' => '/api/auth/user',
+                'search for specific user' => '/api/auth/user/{id}',
+                'search for specific user by document' => '/api/auth/user/document/{document}',
+                'create user' => '/api/user/store',
             ],
         ];
     }
