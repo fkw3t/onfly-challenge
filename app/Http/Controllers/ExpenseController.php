@@ -11,6 +11,7 @@ use DomainException;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Notifications\RegisteredExpense;
 use App\Http\Resources\Expense\ExpenseResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Expense\ExpenseCollection;
@@ -34,9 +35,11 @@ class ExpenseController extends Controller
             $data['occurred_in']
         )->format('Y-m-d H:i:s');
         
-        Expense::create($data);
+        $expense = Expense::create($data);
         
         // TODO add notification
+        $user = $expense->owner;
+        $user->notify((new RegisteredExpense($expense))->delay(now()->addSeconds(15)));
 
         return response()->json([
             'message' => 'Successfully created'

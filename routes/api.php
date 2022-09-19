@@ -23,7 +23,6 @@ use App\Http\Controllers\ExpenseController;
 Route::group(['prefix' => 'auth'], function ($router) {
 
     Route::post('register', [UserController::class, 'store']);
-
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class ,'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);

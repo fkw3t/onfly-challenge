@@ -10,7 +10,7 @@
 * [x] Modelagem do banco
 * [x] Modelagem de entidades
     * [x] Relacionamentos
-* [] Estruturação de endpoints
+* [x] Estruturação de endpoints
     * [x] Auth
         * [x] cadastro 
         * [x] login 
@@ -34,9 +34,9 @@
         * [x] Resource 
         * [x] Collection 
 * [x] Authorization
-    * [] Usuario
+    * [x] Usuario
     * [x] Despesas
-* [] Notification
+* [x] Notification
 * [] Testes
 * [] Documentação - Swagger
 
@@ -44,11 +44,11 @@ Obs:
 - [x] Utilizar UUID.
 - [] Utilizar camada de services e repository pattern.
 
-- [] Fazer a validação da API utilizando o Form Request.
+- [x] Fazer a validação da API utilizando o Form Request.
 - [x] Fazer a camada de transformação da API utilizando o API Resources.
 - [x] Fazer a camada de roteamento utilizando API Resource Routes.
-- [] Fazer a camada de restrição de acesso utilizando as Policies.
-- [] Disparar o e-mail utilizando as Notifications, e colocar ele em uma fila, para que seja disparado de forma assíncrona.
+- [x] Fazer a camada de restrição de acesso utilizando as Policies.
+- [x] Disparar o e-mail utilizando as Notifications, e colocar ele em uma fila, para que seja disparado de forma assíncrona.
 - [x] Não se esqueça das FK nas Migrations e das Relations dos Models.
 
 <h2>modelagem banco de dados</h2>
