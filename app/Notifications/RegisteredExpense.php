@@ -12,6 +12,8 @@ class RegisteredExpense extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    private Expense $expense;
+
     /**
      * Create a new notification instance.
      *
