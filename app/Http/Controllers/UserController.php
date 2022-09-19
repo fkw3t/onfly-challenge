@@ -6,9 +6,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use DomainException;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Http\Resources\User\UserResource;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\User\UserResource;
 use App\Http\Resources\User\UserCollection;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -66,14 +67,26 @@ final class UserController extends Controller
             throw new DomainException('Content not found', 204);
         }
 
-        $user->update($request->all());
+        if ($request->user()->cannot('destroy', $user)) {
+            return response()->json([
+                'message' => 'You can only update your own information'
+            ], 403);
+        }
+
+        $user->update($request->only([
+            'name',
+            'email',
+            'phone',
+            'password'
+        ]));
+        
 
         return response()->json([
             'message' => 'Successfully updated'
         ], 200);
     }
 
-    public function destroy(string $id): JsonResponse
+    public function destroy(Request $request, string $id): JsonResponse
     {
         // TODO add service layer and filter exceptions
         $user = User::find($id);
@@ -81,6 +94,14 @@ final class UserController extends Controller
         if (!$user) {
             throw new DomainException('Content not found', 204);
         }
+
+        if ($request->user()->cannot('destroy', $user)) {
+            return response()->json([
+                'message' => 'You can only delete your own account'
+            ], 403);
+        }
+
+        User::destroy($user);
 
         return response()->json([
             'message' => 'Successfully deleted'
