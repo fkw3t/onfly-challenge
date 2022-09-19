@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Rules\CpfOrCnpj;
+use App\Rules\PersonType;
 use Illuminate\Http\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -30,7 +31,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:50'],
             'person_type' => ['required', 'string', Rule::in(['fisical', 'legal'])],
-            'document_id' => ['required', 'unique:users', 'numeric', new CpfOrCnpj],
+            'document_id' => ['required', 'unique:users', 'numeric', new CpfOrCnpj, new PersonType($this->request->get('person_type'))],
             'email' => ['required', 'unique:users', 'email'],
             'phone' => ['required', 'string', 'regex:/^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/'],
             'password' => ['required', 'string'],

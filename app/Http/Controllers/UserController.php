@@ -5,21 +5,20 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
+use DomainException;
 use Illuminate\Http\JsonResponse;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UserCollection;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
-use App\Http\Resources\UserResource;
-use DomainException;
-use Exception;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 final class UserController extends Controller
 {
-    public function index(): JsonResponse
+    public function index(): JsonResource
     {
-        return response()->json(User::all(), 200);
+        return new UserCollection(User::all());
     }
 
     public function store(StoreUserRequest $request): JsonResponse
@@ -44,11 +43,10 @@ final class UserController extends Controller
             throw new DomainException('Content not found', 204);
         }
 
-        // TODO add user resource
         return new UserResource($user);
     }
 
-    public function showByDocument(string $document): JsonResponse
+    public function showByDocument(string $document): JsonResource
     {
         // TODO add service layer and filter exceptions
         $user = User::firstWhere('document_id', $document);
@@ -57,8 +55,7 @@ final class UserController extends Controller
             throw new DomainException('Content not found', 204);
         }
 
-        // TODO add user resource
-        return response()->json($user, 200);
+        return new UserResource($user);
     }
 
     public function update(UpdateUserRequest $request, string $id): JsonResponse
@@ -70,8 +67,9 @@ final class UserController extends Controller
             throw new DomainException('Content not found', 204);
         }
 
-        // TODO add user resource
-        return response()->json($user, 200);
+        return response()->json([
+            'message' => 'Successfully updated'
+        ], 200);
     }
 
     public function destroy(string $id): JsonResponse

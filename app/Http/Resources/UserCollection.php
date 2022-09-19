@@ -14,6 +14,14 @@ class UserCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'data' => $this->collection,
+            'links' => [
+                'list all users' => '/api/auth/user',
+                'search for specific user' => '/api/auth/user/{id}',
+                'search for specific user by document' => '/api/auth/user/document/{document}',
+                'create user' => '/api/user/store',
+            ],
+        ];
     }
 }

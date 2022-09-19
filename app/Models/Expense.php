@@ -14,7 +14,7 @@ class Expense extends Model
 
     protected $fillable = [
         'description',
-        'ocorred_in',
+        'occurred_in',
         'user_id',
         'amount',
     ];
@@ -30,6 +30,6 @@ class Expense extends Model
 
     public function owner(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

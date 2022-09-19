@@ -14,10 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('expenses', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('description');
+            $table->uuid('id')
+                ->primary();
+            $table->string('description', 191);
             $table->dateTime('occurred_in');
-            $table->foreignUuid('user_id')->constrained();
+            $table->foreignUuid('user_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->decimal('amount');
             $table->timestamps();
         });

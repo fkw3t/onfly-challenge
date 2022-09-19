@@ -11,23 +11,29 @@
 * [x] Modelagem de entidades
     * [x] Relacionamentos
 * [] Estruturação de endpoints
-    * [] Auth
-        * [] cadastro 
-        * [] login 
-        * [] logout
-        * [] token stats
+    * [x] Auth
+        * [x] cadastro 
+        * [x] login 
+        * [x] logout
+        * [x] token stats
+    * [x] Usuario
+        * [x] visualizar usuario por cnpj
+        * [x] visualizar usuario por documento
+        * [x] editar usuario
+        * [x] remover usuario
     * [] Despesas
         * [] cadastrar despesa
         * [] visualizar despesa
         * [] editar despesa
         * [] remover despesa
-* [] Policies
-    * [] User
-        * [] Update
-        * [] Delete
-    * [] Expense
-        * [] Update
-* [] Notifications
+* [] API Resources
+    * [x] Usuario
+        * [x] Resource 
+        * [x] Collection 
+    * [] Despesas
+        * [] Resource 
+        * [] Collection 
+* [] Notification
 * [] Testes
 * [] Documentação - Swagger
 
@@ -36,11 +42,11 @@ Obs:
 - [] Utilizar camada de services e repository pattern.
 
 - [] Fazer a validação da API utilizando o Form Request.
-- [] Fazer a camada de transformação da API utilizando o API Resources.
-- [] Fazer a camada de roteamento utilizando API Resource Routes.
+- [x] Fazer a camada de transformação da API utilizando o API Resources.
+- [x] Fazer a camada de roteamento utilizando API Resource Routes.
 - [] Fazer a camada de restrição de acesso utilizando as Policies.
 - [] Disparar o e-mail utilizando as Notifications, e colocar ele em uma fila, para que seja disparado de forma assíncrona.
-- [] Não se esqueça das FK nas Migrations e das Relations dos Models.
+- [x] Não se esqueça das FK nas Migrations e das Relations dos Models.
 
 <h2>modelagem banco de dados</h2>
 
@@ -59,7 +65,3 @@ Obs:
     * occurred_in: datetime
     * user_id: varchar
     * amount: decimal
-
-
-
-
