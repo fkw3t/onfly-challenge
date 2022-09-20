@@ -57,7 +57,7 @@ Obs:
     * id: varchar(uuid)
     * name: varchar
     * document_id: varchar
-    * person_type: boolean
+    * person_type: enum
     * email: varchar
     * phone: varchar
     * password: varchar
